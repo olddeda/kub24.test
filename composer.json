@@ -1,0 +1,86 @@
+{
+    "name": "kub24/yii2-test-app",
+    "description": "Yii2 application with user authentication and role-based access",
+    "keywords": ["yii2", "framework", "authentication", "rbac"],
+    "homepage": "https://www.yiiframework.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "https://www.yiiframework.com/forum/",
+        "wiki": "https://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.0.0",
+        "ext-pgsql": "*",
+        "yiisoft/yii2": "~2.0.45",
+        "yiisoft/yii2-bootstrap5": "~2.0.2",
+        "yiisoft/yii2-symfonymailer": "~2.0.3",
+        "yiisoft/yii2-redis": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "vlucas/phpdotenv": "^5.0",
+        "yiisoft/yii2-debug": "~2.1.0",
+        "yiisoft/yii2-gii": "~2.2.0"
+       
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.5.0",
+        "codeception/codeception": "^5.0",
+        "codeception/module-asserts": "^3.0",
+        "codeception/module-yii2": "^1.1",
+        "codeception/module-filesystem": "^3.0",
+        "codeception/verify": "^2.2"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject",
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "setup": [
+            "@copy-env",
+            "composer install",
+            "php yii migrate --interactive=0",
+            "php yii rbac/init",
+            "php yii seed/all"
+        ],
+        "copy-env": [
+            "cp .env.example .env"
+        ],
+        "docker-setup": [
+            "cp .env.docker .env",
+            "docker-compose up -d --build"
+        ],
+        "create-admin": [
+            "php yii user/create-admin"
+        ],
+        "seed-data": [
+            "php yii seed/all"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": ""
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}

@@ -1,0 +1,162 @@
+# Yii2 Framework
+/vendor/
+/runtime/
+/web/assets/
+/web/index-test.php
+/tests/_output/
+/tests/_support/_generated
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Composer
+composer.phar
+composer.lock
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node_modules
+node_modules/
+
+# Temporary folders
+tmp/
+temp/
+
+# Cache files
+.cache/
+.parcel-cache/
+
+# Build outputs
+dist/
+build/
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+
+# Database dumps
+*.sql
+*.sqlite
+*.db
+
+# Configuration backups
+config/db.php.bak
+config/web.php.bak
+config/console.php.bak
+
+# Mail files (when using file transport)
+runtime/mail/
+
+# Debug files
+runtime/debug/
+
+# Asset bundles cache
+web/assets/*
+!web/assets/.gitkeep
+
+# Keep directory structure
+!runtime/.gitkeep
+!runtime/*/.gitkeep
+
+# Testing
+codeception.yml
+tests/_support/_generated/
+
+# Lock files
+package-lock.json
+yarn.lock
+
+# Local development files
+.local/
+*.local
+
+# Vagrant
+.vagrant/
+
+# PhpStorm
+.idea/
+
+# VS Code
+.vscode/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Security
+*.pem
+*.key
+*.crt
+*.p12
+
+# Local configuration overrides
+config/local.php
+config/local-*.php

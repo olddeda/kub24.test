@@ -1,0 +1,67 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kub24-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+    ports:
+      - "8080:80"
+    networks:
+      - kub24-network
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - .env.docker
+
+  db:
+    image: postgres:15-alpine
+    container_name: kub24-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: kub24_test
+      POSTGRES_USER: kub24_user
+      POSTGRES_PASSWORD: kub24_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "15432:5432"
+    networks:
+      - kub24-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: kub24-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "16379:6379"
+    networks:
+      - kub24-network
+
+  adminer:
+    image: adminer:latest
+    container_name: kub24-adminer
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    networks:
+      - kub24-network
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  kub24-network:
+    driver: bridge

@@ -1,0 +1,54 @@
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+*.md
+docs/
+
+# Development files
+.env.example
+.env.local
+docker-compose.override.yml
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules (if any)
+node_modules/
+npm-debug.log
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+
+# Test files
+tests/
+codeception.yml
+
+# Runtime data (will be created in container)
+runtime/cache/*
+runtime/logs/*
+runtime/mail/*
+runtime/debug/*
+!runtime/.gitkeep
+!runtime/*/.gitkeep
+
+# Web assets (will be generated)
+web/assets/*
+!web/assets/.gitkeep
+
+# Composer lock (will be generated)
+composer.lock
+
+# Vendor (will be installed in container)
+vendor/
